@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import { FormularioCadastro } from './components/FormularioCadastro/index';
+import { ListaDeNotas } from './components/ListaDeNotas/index';
+import { ListaDeCategorias } from './components/ListaDeCategorias';
+import './assets/styles/reset.css';
+import './assets/styles/global.css';
 
-function App() {
+//react - lib;
+//React - Ecossistema.
+
+
+export  function App() {
+  const [notas, setNotas] = useState([]);
+  const [categorias, setCategorias] = useState(["Games", "Trabalho"]);
+  const criarNota = (titulo, texto, categoria) => {
+    const novaNota = {
+      titulo,
+      texto, 
+      categoria
+    };
+    setNotas([...notas, novaNota]);
+  }
+  const apagarNota = (index) => {
+    let arrayNotas = [...notas];
+    arrayNotas.splice(index,1);
+    setNotas(arrayNotas);
+  }
+  const criarCategoria = (nomeCategoria) => {
+    setCategorias([...categorias, nomeCategoria]);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <section className='conteudo'>
+        <FormularioCadastro 
+        criarNota={criarNota}
+        categorias={[...categorias]} />
+        <main className='conteudo-principal'>
+          <ListaDeCategorias criarCategoria={criarCategoria} categorias={categorias}/>
+          <ListaDeNotas 
+          notas={notas}
+          apagarNota={apagarNota}
+          />
+
+        </main>
+      </section>    
   );
 }
 
-export default App;
