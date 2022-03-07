@@ -11,7 +11,7 @@ import './assets/styles/global.css';
 
 export  function App() {
   const [notas, setNotas] = useState([]);
-  const [categorias, setCategorias] = useState(["Games", "Trabalho"]);
+  const [categorias, setCategorias] = useState([]);
   const criarNota = (titulo, texto, categoria) => {
     const novaNota = {
       titulo,

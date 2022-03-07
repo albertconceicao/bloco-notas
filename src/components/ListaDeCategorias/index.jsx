@@ -10,11 +10,7 @@ export const ListaDeCategorias = (props) => {
         <section className="lista-categoria">
             <ul className="lista-categorias_lista">
                 {props.categorias.map((categoria, index)=> {
-                    return                    <li 
-                        key={index}
-                        className="lista-categorias_item">{categoria}
-                        </li>;
-                
+                    return  <li key={index}className="lista-categorias_item">{categoria}</li>;
                 })}
                 
             </ul>

@@ -33,10 +33,10 @@ export const FormularioCadastro = (props) => {
           <select 
           onChange={handleMudancaCategoria}
           className="form-cadastro_input">
-            <option value="">Sem categoria</option>
+            <option value="Sem categoria">Sem categoria</option>
             {props.categorias.map((categoria, index) => {
               return (
-                <option key={index} value="">{categoria}</option>
+                <option key={index} value={categoria}>{categoria}</option>
               );
             })}
           </select>
